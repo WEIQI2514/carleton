@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -69,58 +70,49 @@ def pre_process(df):
 
 df = pre_process(df)
 num_companies=df.count()[0]
+df.reset_index(inplace = True, drop= True)
 st.dataframe(df)
 
 if st.sidebar.checkbox("dataset after preprocessing"):
     st.subheader("Data set after preprocessing")
     st.write(df)
     st.write('Number of companies remaining is :' , num_companies)
-    
-
-# Calculate the number of companies greater than 3 years and younger than 7 years
-df.shape
 
 # Select a target (or create a target)
 # Map ipo or is_acquired ==True ->success, is_closed & else ->no
 
-def success_test(ipo, is_acquired, is_closed):
+#def success_test(ipo, is_acquired, is_closed):
 #df = df[((df['ipo'] == True ) | (df['is_acquired'] == True)) & (df['is_closed'] == False)]
-    if is_closed == True:
-        return 0
-    elif (ipo==False) and (is_acquired==False)  and (is_closed==False):
-        return 0
-    else:
+#    if is_closed == True:        return 0
+#    elif (ipo==False) and (is_acquired==False)  and (is_closed==False):
+#        return 0
+#    else:        return 1
+def successtest(row):
+    if row['ipo'] ==True or row['is_acquired']==True and row['is_closed']==False:
         return 1
-
+    else:
+        return 0
+    
 # Apply success function to each row (axis=1) 
-
-df['success'] = df[['ipo','is_acquired','is_closed']].apply(lambda x : success_test(*x), axis=1)
+# df['success'] = df[['ipo','is_acquired','is_closed']].apply(lambda x : success_test(*x), axis=1)
+df['success']= df.apply(successtest, axis=1)
 
 # drop raw features
-#df = df.drop('ipo', axis=1)
-#df = df.drop('is_acquired', axis=1)
-#df = df.drop('is_closed', axis=1)
+# df = df.drop('ipo', axis=1)
+# df = df.drop('is_acquired', axis=1)
+# df = df.drop('is_closed', axis=1
 
 # Create derived features from existing features
 # no feature refers to the eduction levels of founders, so create a new feature (number_degrees)
 # that is sum of the degrees
 
-#df['mba_degree'] = df['mba_degree'].fillna(0)
-#df['phd_degree'] = df['phd_degree'].fillna(0)
-#df['ms_degree'] = df['ms_degree'].fillna(0)
-#df['other_degree'] = df['other_degree'].fillna(0)
+# df['number_degrees']= df['mba_degree'] +  df['phd_degree']+ df['ms_degree']+ df['other_degree']
 column_names = ['mba_degree', 'phd_degree', 'ms_degree', 'other_degree']
 df['number_degrees']= df[column_names].sum(axis=1)
 
 #if st.sidebar.checkbox("Show derived features"):
 #    st.header('Derived features')
 #    st.write(df)
-
-# drop raw features
-#df = df.drop('mba_degree', axis=1)
-#df = df.drop('phd_degree', axis=1)
-#df = df.drop('ms_degree', axis=1)
-#df = df.drop('other_degree', axis=1)
 
 
 # Identify numerical features and their correlations
@@ -142,7 +134,7 @@ if st.sidebar.checkbox("Show correlation matrix"):
     st.pyplot(fig)
 
 # Identify categorical features
-categorical_features = ['country_code','state_code','ipo','is_acquired','is_closed']
+categorical_features = ['country_code','state_code']
 
 # Check for look-ahead bias (data leakage)
 # all features are known before the investment is made, so we don't have look-ahead bias.
@@ -155,13 +147,11 @@ def missing_values_ratios(df):
 
 if st.sidebar.checkbox("Show missing values ratios"):
     st.subheader("Missing values ratios")
-    # Some features are not informative and should be removed? Which ones?
-    # List of features with a missing value ratio above 0.6
     st.write(missing_values_ratios(df))
 
-# There are missing values in average_funded, 'products_number', 'offices', 'acquired_companies', 'mba_degree','phd_degree','ms_degree', 'other_degrees in this dataset
-# we can choose default values as 0 for numerical features.
-# However we cannot set a default value for category_code
+# There are missing values in columns:['category_code','average_funded','average_funded',
+#'products_number','offices', 'acquired_companies', 'mba_degree','phd_degree','ms_degree',
+#'other_degrees] in this dataset
 
 # Check for duplicate rows
 # Count the number of duplicate rows
@@ -170,7 +160,11 @@ if st.sidebar.checkbox("Duplicate rows"):
     st.subheader('Number of duplicate rows')
     st.write("%d rows are duplicates" % (num_duplicate_rows))
 
-# There are 2 duplicate rows, so this may not make much difference to our output
+# Drop duplicates
+# There are 2 duplicate rows, so this may not make much difference to our output,but we better remove them.
+df = df.drop_duplicates()
+
+# Some features are not informative and should be removed? Which ones?
 
     
 # Check for class imbalance
@@ -191,6 +185,7 @@ if st.sidebar.checkbox('Class imbalance'):
     st.write('Degree of imbalance: %.1f to 1 failed startup to successful startup' % 
         (failed_startups/successful_startups))
 
+
 # MODELING
 # Checklist:
 # Create a pipeline for pre-processing features
@@ -208,7 +203,7 @@ def pre_processor(numerical_features, categorical_features):
         # Pipeline for pre-processing categorical features
     # One-hot encode the values
     categorical_transformer = Pipeline(
-        steps = [('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+        steps = [('imputer', SimpleImputer(strategy='constant',fill_value='missing')),
                  ('onehot', OneHotEncoder(handle_unknown='ignore'))])
 
     # Combine the two pipelines into one
@@ -232,8 +227,15 @@ elif type_of_classifier == "Gradient Boosting":
     classifier = GradientBoostingClassifier()
 elif type_of_classifier == "Neural Network":
     classifier = MLPClassifier(max_iter=2000, hidden_layer_sizes=(30,), early_stopping=True)
-model = Pipeline(steps=[('preprocessor', preprocessor),
-    ('classifier', classifier)])
+    
+model = Pipeline(steps=[('preprocessor', preprocessor),('under', RandomUnderSampler()),
+                        ('classifier', classifier)])
+# Choose a way to deal with imbalanced data
+# General strategies:
+# We can use class weights to balance the classes
+# We can also oversample the minority class or undersample the majority class
+# Here, there are no obvious improvement on our prediction,so we choose not to deal with the imbalance?  
+# ('over',RandomOverSampler()), ('under', RandomUnderSampler())
 
 # Show the pipeline
 if st.sidebar.checkbox("Show pipeline"):
@@ -255,9 +257,9 @@ y = df['success']
 
 # Choose train and test datasets
 # When the samples are independent, create a stratified split
-# Split the data into 70% training and 30% testing
+# Split the data into 80% training and 20% testing
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, shuffle=True, stratify=y, random_state=42)
+    X, y, test_size=0.2, shuffle=True, stratify=y, random_state=42)
 
 
 # Identify the most suitable performance metrics for evaluating the model
@@ -269,34 +271,12 @@ X_train, X_test, y_train, y_test = train_test_split(
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 scores = cross_validate(model, X_train, y_train, cv=cv, n_jobs=-1,
   scoring=['accuracy', 'roc_auc', 'precision', 'recall', 'f1'])
-print(scores)
 
 # Choose a way to deal with imbalanced data
 # General strategies:
 # We can use class weights to balance the classes
 # We can also oversample the minority class or undersample the majority class
 # Here, we will use Undersampling
-
-# example of evaluating a decision tree with random undersampling
-from numpy import mean
-from sklearn.datasets import make_classification
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.tree import DecisionTreeClassifier
-from imblearn.pipeline import Pipeline
-from imblearn.under_sampling import RandomUnderSampler
-# define dataset
-X, y = make_classification(n_samples=9832, weights=[0.08],flip_y=0)
-print(Counter(y))
-# define pipeline
-steps = [('under', RandomUnderSampler()), ('model', DecisionTreeClassifier())]
-pipeline = Pipeline(steps=steps)
-# evaluate pipeline
-cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-scoresF1 = cross_val_score(pipeline, X, y, scoring='f1_micro', cv=cv, n_jobs=-1)
-scoreF1 = mean(scoresF1)
-print('F1 Score: %.3f' % scoreF1)
-
 
 model.fit(X_train,y_train)
 y_pred = model.predict(X_test)
@@ -307,7 +287,7 @@ if st.sidebar.checkbox("Show Confusion matrix"):
 
     conf_matrix = metrics.confusion_matrix(y_test, y_pred)
     
-    fig, ax = plt.subplots(figsize=(6.4, 4.8))
+    fig, ax = plt.subplots(figsize=(4.8, 4.8))
     sns.heatmap(conf_matrix, annot=True, fmt='d', ax=ax,
     cmap=plt.cm.Greens)
     ax.set_xlabel('Predicted')
@@ -353,6 +333,3 @@ ax.set_xlabel('Feature importance')
 ax.set_ylabel('Feature')
 ax.set_title("Feature importance")
 st.pyplot(fig)
-
-
-
