@@ -310,19 +310,114 @@ def main () :
     print ("The value in",  years ,"years is: ", principal) 
         
 main ()
-#  7. Suppose you have an investment plan where you invest a certain fixed amount every year. Modify futeval.py
-#     to compute the total accumulation of your investment. The inputs to the program will be the amount to invest
-#     each year, the interest rate, and the number of years for the investment.
+#  7. Suppose you have an investment plan where you invest a certain fixed amount every year. Modify futeval.py to compute the total accumulation of your investment. 
+#     The inputs to the program will be the amount to invest each year, the interest rate, and the number of years for the investment.
 
-#     inputs: principle
+#     inputs: fixed yearly investment
 #             APR
-#             fixed yearly investment
 #             number of years
 #     output: total accumulation
+#	
 
 #     start with principal
 #     for a given number of years, add fixed yearly investment to principal
 #     to the resulting sum, calculate APR and add this to the sum
 #     repeat for specified # of years
 #     then
+# futval . py 
+# A program to compute compute the total accumulation of your investment
+# carried the number of years from users
+def main () : 
+    print ("This program calculates the accumulation value") 
+    print ("of a fixed amount yearly investment.") 
+    amount = eval (input ("Enter the fixed amount investment: ") ) 
+    year = eval(input("How many years: "))
+    apr = eval (input ("Enter the annual interest rate: ") ) 
+    total = 0
+    for i in range (year) : 
+        amount = amount * (1 + apr) 
+        total += amount
+    print ("The total value in", year, " years is: ", total) 
+        
+main ()
 
+#  8. As an alternative to APR, the interest accrued on an account is often described in terms of a nominal rate and the number of compounding periods. 
+#     For example, if the interest rate is 3% and the interest is compounded quarterly, the account actually earns .75% interest every 3 months.
+#
+#     Modify the futval.py program to use this method of entering the interest rate. The program should prompt the user for the yearly rate (rate) and
+#     the number of times that the interest is compounded each year (periods). To compute the value in ten years, the program will loop 10 * periods     
+#     times and accrue rate/period interest on each iteration.
+#	input: nominal rate
+#	compounding periods
+#	pricipal
+#	output: total investment valur
+#
+## futval.py
+#    A program to compute the future value of an investment with number of years determined by the user
+def main () : 
+    print("This program calculates the total future value")
+    print("of a 10-year investment with by describing")
+    print("the interest accrued in terms of a nominal rate")
+    print("and the number of compounding periods.")
+
+    principal = eval (input ("Enter the initial principal: ") ) 
+    interest_rate = eval (input ("Enter the annual interest rate: ") ) 
+    periods = eval(input("Enter the number of compounded periods in a year for the investment: "))
+    years = eval(input("Enter the number of years for the investment: "))
+    nominal_rate = interest_rate / periods
+    for i in range (years * periods) : 
+        principal = principal * (1 + nominal_rate) 
+    print ("The value in",  years ,"years is: ", principal) 
+        
+main ()
+
+#  9. Write a program that converts temperatures from Fahrenheit to Celsius.
+
+# convert2.py
+#     A program to convert Fahrenheit temps to Celsius
+# by: Susan Computewell
+
+def main():
+    
+    print("This program converts a temperature in Fahrenheit to a temperature in Celsius.")
+    
+    fahrenheit = eval(input("What is the Fahrenheit temperature? "))
+    celsius = 9/5 * celsius + 32
+    fahrenhet = (fahrenheit - 32) * 5/9
+    
+    print("The temperature is", fahrenheit, "degrees Fahrenheit.")
+    input("Press the <Enter> key to quit.") # Why does this work?
+main()
+
+# 10. Write a program that converts distances measured in kilometers to miles. One kilometer is approximately 0.62 miles.
+
+# convert3.py
+#     A program to convert distances measured in kilometers to miles
+# by: Susan Computewell
+
+def main():
+    
+    print("This program converts  distances measured in kilometers to miles.")
+    
+    kilometers = eval(input("What is the distance in kilometers? "))
+    miles = kilometers * 0.62 
+    print("The distance is", miles, "miles.")
+    input("Press the <Enter> key to quit.")
+    
+main()
+
+# 12. Write an interactive Python calculator program. The program should allow the user to type a
+#     mathematical expression, and then print the value of the expression. Include a loop so that the
+#     user can perform many calculations (say, up to 100). Note: To quit early, the user can make the
+#     program crash by typing a bad expression or simply closing the window that the calculator program
+#     is running in. You'll learn better ways of terminating interactive programs in later chapters.
+
+def main():
+
+    print("This program is an interactive calculator. Enter your calculations below.")
+
+    for i in range(100):
+        expression = eval(input(""))
+        print(expression)
+
+main()
