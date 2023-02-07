@@ -145,7 +145,126 @@
 #     A = 4pir^2
 #	
 #
+import math
+def main():
+    print("This is a program calculate volumn and surface area of a sphere")
+    r = int(input("Enter the radius of a sphere:"))
+    volumn =  (4/3) * 3 * math.pi * r**3
+    area = 4 * math.pi * r ** 2
+    print("The volumn of the sphere is", volumn)
+    print("The surface area of the sphere is", area)
+    
+main()
+##  2. Write a program that calculates the cost per square inch of a circular pizze, given its diameter and price. The formula for area is
+#     A = pir^2.
 #
+import math
+def main():
+    print("This is a program calculate the cost per")
+    print("square inch of a circular pizza")
+    r = int(input("What is the diameter of the pizza in inches:")) / 2
+    price = float(input("How much is the pizza: "))
+    area = math.pi * r ** 2
+    cost = price/ area
+    print("The cost of the pizza in per square inch is", cost)
+    
+main()
+#  3. Write a program that computes the molecular weight of a carbohydrate (in grams per mole) based on the number of hydrogen, carbon, and oxygen atoms in the
+#     molecule. The program should prompt the user to enter the number of hydrogen atomes, the number of carbon atoms, and the number of oxygen atoms. The
+#     program then prints the total combined molecular weight of all the atoms based on these individual atom weights:
+#                  Atom      Weight
+#                            (grams/mole)
+#                  ______________________
+#                  H         1.00894
+#                  C         12.0107
+#                  O         15.9994
+#     For example, the molecular weight of water (H20) is 2(1.00794) + 15.9994 = 18.01528.
+#
+def main():
+    print("This is a program calculate the molecular weight of a ")
+    print("carbohydrate (in grams per mole)")
+    h,c,o = eval(input("How many hydrogen, carbon, and oxygen atoms in the molecule:"))
+    hydrogen = 1.00894
+    carbon = 12.0107
+    oxygen = 15.9994
+    weight = h* hydrogen +c * carbon + o * oxygen
+    print("The molecular weight of the carbonhydrate is", weight)
+    
+main()
+#
+#  4. Write a program that determines the distance to a lightning strike based on the time elapsed between the flash and the sound of thunder.
+#     The speed of sound is approximately 1100 ft/sec and 1 mile is 5280 ft.
+
+#  5. The Konidtorei coffee shop sells coffee at $10.50 a pound plus the cost of shipping. Each order ships for $.086 per pound + $1.50 fixed cost
+#     for overhead. Write a program that calculates the cost of an order.
+
+#  6. Two points in a plane are specified using the coordinates (x1,y1) and (x2,y2). Write a program that calculates the slope of a line through
+#     two (non-vertical) points entered by the user.
+#                                                   slope = (y2 - y1) / (x2 - x1)
+
+#  7. Write a program that accepts two points (see previous problem) and determins the distance between them.
+#     distances = sqrt((x2-x1)^2 + (y2-y1)^2)
+
+#  8. The Gregorian epact is the number of days between Janaury 1st and the previous new moon. This value is used to figure out the date of Easter.
+#     It is calculated by these formulas (using int arithmetic):
+#                                                               C = year//100
+#                                                               epact = (8 + (C//4) - C + ((8C + 13)//25) + 11(year%19))%30
+
+#  9. Write a program to calcualte the area of a triangle given the length of its three sides--a, b, and c--using these formulas:
+#                                         s = (a + b + c) / 2
+#                                         A = sqrt(s(s - a)(s - b)(s - c))
+#     
+# 10. Write a program to determine the length of a ladder required to reach a given height when leaned against a house. The height and angle of the
+#     ladder are given as inputs. To compute length use:
+#                                                       length = height / sin angle
+#     Note: The angle must be in radians. Prompt for an angle in degrees and use this formula to convert:
+#                                                       radians = (pi / 180) degrees
+
+# 11. Write a program to find the first n natural numbers, where the value of n is provided by the user.
+
+# 12. Write a program to find the sum of the cubes of the first n natural numbers where the value of n is provided by the user.
+
+# 13. Write a program to sum a series of numbers entered by the user. The program should first prompt the user for how many numbers are to be summed.
+#     The program should then prompt the user for each of the numbers in turn and print out a total sum after all the numbers have been entered.
+#     Hint: Use an input statement in the body of the loop.
+
+# sum.py
+# a program that sums up a series of numbers entered by the user
+
+def main():
+    number = eval(input("How many numbers are to be summed?")
+
+    for i in number
+
+# 14. Write a program that finds the average of a series of numbers entered by the user. As in the previous problem, the program will first ask the
+#     user how many numbers there are. Note: The average should always be a float, even if the user inputs are all ints.
+
+# avg.py
+# a progrma that finds the average of a series of numbers entered by the user
+
+
+
+# 15. Write a program tha approximates the value of pi by summing the terms of this series:
+#     4/1 - 4/3 + 4/5 = 4/7 + 4/9 - 4/11 + ...
+#     The program should prompt the user for n, the number of terms to sum, and then output the sum of the first n terms of this series. Have your
+#     program subtrac the approximation from the value of math.pi to see how accurate it is.
+
+# 16. A Fibnoacci sequence is a sequence of numbers where each successive number is the sum of the previous two. The classic Fibonacii sequence
+#     begins: 1, 1, 2, 3, 5, 8, 13 ... . Write a program that computes the nth Fibonacci number where n is a value input by the user. For example,
+#     if n = 6, then the result is 8.
+
+
+
+# 17. You have seen that the math library contains a function that computes the square root of numbers. In this exercise, you are to write your own
+#     algorithm for computing square roots. One way to solve this problem is to use a guess-and-check approach. You first guess what the square root
+#     might be, and then you see how close your guess is. You can use this information to make another guess and continue guessing until you have
+#     found the square root (or a close approximation to it). One particularly good way of making guesses is to use Newton's method.
+#     Suppose x is the number we want the root of, and guess is the current guessed answer.
+#     The guess can be improved by using computing the next guess as:
+#                                                                    (guess + (x / guess)) / 2.
+#     Write a program that implements Newton's method. The program should prompt the user for the value to find the square root of (x) and the
+#     number of times to improve the guess. Starting with a guess value of x/2, your program should loop the specified number of times applying Newton's
+#     method and report the final value of guess. You should also subtract your estimate from the value of math.sqrt(x) to show how close it is.
 
 
 
