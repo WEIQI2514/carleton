@@ -268,3 +268,499 @@ main()
 # Q3) Write a program which draws some sort of face
 #
 #
+import graphics
+from graphics import *
+
+def main():
+    #head
+    win = GraphWin('Face',400,400)
+    f = Oval(Point(85,75),Point(315,325))
+    f.setFill('Lavender Blush')
+    f.draw(win)
+
+    #eyes
+    el = Circle(Point(160,160),15)
+    el.setFill('white')
+    el.draw(win)
+    ebl = Circle(Point(160,160),5)
+    ebl.setFill('black')
+    ebl.draw(win)
+
+    er = Circle(Point(240,160),15)
+    er.setFill('white')
+    er.draw(win)
+    ebr = Circle(Point(240,160),5)
+    ebr.setFill('black')
+    ebr.draw(win)
+
+    #mouth
+    n = Oval(Point(170,250),Point(230,270))
+    n.setFill('pink')
+    n.draw(win)
+    l = Line(Point(170,260),Point(230,260))
+    l.draw(win)
+    
+    #nose
+    n = Polygon(Point(200,150),Point(180,240),Point(220,240))
+    n.setFill('pink')
+    n.draw(win)
+
+    win.getMouse() # pause for click in window
+    win.close()
+
+main()
+
+
+# Q4) Write a program which draws a winter scene with a Christmas tree and snowman
+#
+#Write a program that draws a winter scene and some snowmen.
+import graphics
+from graphics import *
+
+def main():
+    #head
+    win = GraphWin('winter scene',600,450)
+
+    #background
+    win.setBackground('darkgrey')
+
+    #snow
+    sn = Rectangle(Point(0,170), Point(600,450))
+    sn.setFill('white')
+    sn.draw(win)
+
+    #trees
+    tr = Polygon(Point(50,300), Point(120,210), Point(200,300))
+    tr.setFill('green')
+    tr.draw(win)
+
+    tr = Polygon(Point(65,220), Point(120,130), Point(175,220))
+    tr.setFill('green')
+    tr.draw(win)
+
+    tr = Polygon(Point(80,140), Point(120,85), Point(160,140))
+    tr.setFill('green')
+    tr.draw(win)
+    
+    tr = Rectangle(Point(116,320),Point(124,300))
+    tr.setFill('black')
+    tr.draw(win)
+
+    tr = Polygon(Point(400,350), Point(450,280), Point(500,350))
+    tr.setFill('green')
+    tr.draw(win)
+    
+    tr = Polygon(Point(410,300), Point(450,230), Point(490,300))
+    tr.setFill('green')
+    tr.draw(win)
+    
+    tr = Polygon(Point(420,250), Point(450,180), Point(480,250))
+    tr.setFill('green')
+    tr.draw(win)
+    
+    tr = Rectangle(Point(446,370),Point(454,350))
+    tr.setFill('black')
+    tr.draw(win)
+    
+    #snowman
+    s = Circle(Point(300,300),80)
+    s.setFill('white')
+    s.draw(win)
+
+    s = Circle(Point(300,210),50)
+    s.setFill('white')
+    s.draw(win)
+
+    s = Circle(Point(300,145),45)
+    s.setFill('white')
+    s.draw(win)
+
+    #coal
+    c = Circle(Point(280,135),7)
+    c.setFill('black')
+    c.draw(win)
+
+    c = Circle(Point(320,135),7)
+    c.setFill('black')
+    c.draw(win)
+
+    #carrot
+    c = Circle(Point(300,150),5)
+    c.setFill('orange')
+    c.draw(win)
+    
+    c = Polygon(Point(300,155),Point(300,145),Point(270,154))
+    c.setFill('orange')
+    c.draw(win)
+
+
+    win.getMouse() # pause for click in window
+    win.close()
+
+main()
+#
+# Q5) Write a program that draws 5 dice on the screen depicting a straight (1,2,3,4,5 or 2,3,4,5,6).
+#
+#Write a program that draws 5 dice on the screen depicting a straight (1, 2, 3, 4, 5)
+import graphics
+from graphics import *
+
+def main():
+    win = GraphWin('dice',500,100)
+    win.setCoords(0,0,5,1)
+
+    for i in range(5):
+        dice = Rectangle(Point(0.1+i,0.1),Point(0.9+i,0.9))
+        dice.setFill('red')
+        dice.draw(win)
+
+    center = Point((0.5),(0.5))
+
+    #dice1
+    d1 = Circle(center,0.08)
+    d1.setFill('white')
+    d1.setOutline('white')
+    d1.draw(win)
+
+    #dice2
+    d2a = d1.clone()
+    d2a.draw(win)
+    d2a.move(0.8,0.2)
+
+    d2b = d1.clone()
+    d2b.draw(win)
+    d2b.move(1.2,-0.2)
+
+    #dice3
+    d3a = d1.clone()
+    d3a.draw(win)
+    d3a.move(2.0,0.0)
+
+    d3b = d1.clone()
+    d3b.draw(win)
+    d3b.move(2.2,0.2)
+
+    d3c = d1.clone()
+    d3c.draw(win)
+    d3c.move(1.8,-0.2)
+
+    #dice4
+    d4a = d1.clone()
+    d4a.draw(win)
+    d4a.move(2.8,-0.2)
+
+    d4b = d1.clone()
+    d4b.draw(win)
+    d4b.move(2.8,0.2)
+
+    d4c = d1.clone()
+    d4c.draw(win)
+    d4c.move(3.2,0.2)
+
+    d4d = d1.clone()
+    d4d.draw(win)
+    d4d.move(3.2,-0.2)
+
+    #dice5
+    d5e = d1.clone()
+    d5e.draw(win)
+    d5e.move(4.0,0.0)
+
+    d5e = d1.clone()
+    d5e.draw(win)
+    d5e.move(3.8,-0.2)
+
+    d5e = d1.clone()
+    d5e.draw(win)
+    d5e.move(3.8,0.2)
+
+    d5e = d1.clone()
+    d5e.draw(win)
+    d5e.move(4.2,0.2)
+
+    d5e = d1.clone()
+    d5e.draw(win)
+    d5e.move(4.2,-0.2)
+
+    win.getMouse() # pause for click in window
+    win.close()
+
+main()
+#
+#Write a program that draws 5 dice on the screen depicting a straight ( 2, 3, 4, 5, 6)
+import graphics
+from graphics import *
+
+def main():
+    win = GraphWin('Dices2',500,100)
+    win.setCoords(0,0,5,1)
+
+    for i in range(5):
+        dice = Rectangle(Point(0.1+i,0.1),Point(0.9+i,0.9))
+        dice.setFill('white')
+        dice.draw(win)
+
+    center = Point((0.5),(0.5))
+    # dice 0- 1 points
+    d1 = Circle(center,0.08)
+    d1.setFill('red')
+
+    #dice1-2 points
+    d2a = d1.clone()
+    d2a.draw(win)
+    d2a.move(-0.2,0.2)
+
+    d2b = d1.clone()
+    d2b.draw(win)
+    d2b.move(0.2,-0.2)
+
+    #dice2 - 3points
+    d3a = d1.clone()
+    d3a.draw(win)
+    d3a.move(1.0,0.0)
+
+    d3b = d1.clone()
+    d3b.draw(win)
+    d3b.move(0.8,0.2)
+
+    d3c = d1.clone()
+    d3c.draw(win)
+    d3c.move(1.2,-0.2)
+
+    #dice3 -4 points
+    d4a = d1.clone()
+    d4a.draw(win)
+    d4a.move(1.8,-0.2)
+
+    d4b = d1.clone()
+    d4b.draw(win)
+    d4b.move(1.8,0.2)
+
+    d4c = d1.clone()
+    d4c.draw(win)
+    d4c.move(2.2,0.2)
+
+    d4d = d1.clone()
+    d4d.draw(win)
+    d4d.move(2.2,-0.2)
+
+    #dice4-5 points
+    d5a = d1.clone()
+    d5a.draw(win)
+    d5a.move(3,0.0)
+
+    d5b = d1.clone()
+    d5b.draw(win)
+    d5b.move(2.8,-0.2)
+
+    d5c = d1.clone()
+    d5c.draw(win)
+    d5c.move(2.8,0.2)
+
+    d5d = d1.clone()
+    d5d.draw(win)
+    d5d.move(3.2,0.2)
+
+    d5e = d1.clone()
+    d5e.draw(win)
+    d5e.move(3.2,-0.2)
+    
+    #dice5 -6 points
+    d6a = d1.clone()
+    d6a.draw(win)
+    d6a.move(3.8,0.2)
+
+    d6b = d1.clone()
+    d6b.draw(win)
+    d6b.move(3.8,0.0)
+
+    d6c = d1.clone()
+    d6c.draw(win)
+    d6c.move(3.8,-0.2)
+    
+    d6d = d1.clone()
+    d6d.draw(win)
+    d6d.move(4.2,0.0)
+
+    d6e = d1.clone()
+    d6e.draw(win)
+    d6e.move(4.2,0.2)
+
+    df = d1.clone()
+    d6f.draw(win)
+    d6f.move(4.2,-0.2)
+
+    win.getMouse() # pause for click in window
+    win.close()
+
+main()
+#
+# Q6) Modify the graphical future value program so that the input (principal and APR) also are done in a graphical fashion using Entry objects.
+#
+#futval_graph.py
+from graphics import *
+
+def main():
+    
+    #Introduction
+    print("The program plots the growth of a 10-year investment")
+
+    #Create a graphics window with labels on left edge
+    win = GraphWin("Investment Growth Chart", 640, 480)
+    win.setBackground("white")
+    win.setCoords(-1.75,-9000, 11.5,15400)
+
+    #Principle input
+    Text(Point(1.0, -2000), "Input starting principle").draw(win)
+    inputprinciple = Entry(Point(3.2, -2000), 6)
+    inputprinciple.setText("0")
+    inputprinciple.draw(win)
+
+    #Interest input
+    Text(Point(7, -2000), "Input interest rate(%)").draw(win)
+    inputinterest = Entry(Point(9.5, -2000),6)
+    inputinterest.setText("0")
+    inputinterest.draw(win)
+
+    #Create the Calculate button
+    button = Rectangle(Point(2,-6000),Point(8,-8000))
+    button.setFill("blue")
+    button.draw(win)
+    buttontxt = Text(Point(5,-7200),"Calculate:")
+    buttontxt.draw(win)
+    win.getMouse()
+
+    #Receive input
+    p = eval(inputprinciple.getText())
+    q = eval(inputinterest.getText())/100
+
+    #labels
+    Text(Point(-1, 0), ' 0.0K').draw(win)
+    Text(Point(-1, 2500), ' 2.5K').draw(win)
+    Text(Point(-1, 5000), ' 5.0K').draw(win)
+    Text(Point(-1, 7500), ' 7.5K').draw(win)
+    Text(Point(-1, 10000), ' 10.0K').draw(win)
+    Text(Point(4.0, 14000), "Future Values Calculator").draw(win)
+         
+    #Draw a bar for the initial principle
+    bar = Rectangle(Point(0, 0), Point(1, p))
+    bar.setFill("green")
+    bar.setWidth(2)
+    bar.draw(win)
+
+    #Draw bars for successive years
+    for i in range(1,11):
+        #calculate value for next year
+        p = p * (1 + q)
+        #Draw a bar for this value
+        bar = Rectangle(Point(i, 0), Point(i+1, p))
+        bar.setFill("green")
+        bar.setWidth(2)
+        bar.draw(win)
+
+    buttontxt.setText('Quit.')
+
+    win.getMouse() # pause for click in window
+    win.close()
+
+main()
+#
+# Q7) Circle Intersection.
+#     Write a program that computes the intersection of a circle with a horizontal line and displays the information textually and graphically.
+#     Input: Radius of the circle and the y-intercept of the line.
+#     Output: Draw a circle centered at (0,0) with teh given radius in a window with coordinates running from -10,-10 to 10,10.
+#     Draw a horizontal line across the window and the given-y intercept.
+#     Draw the two points of intersection in red.
+#     Print out the x values of the points of intersection.
+#     Formula: x = + or -(sqrt((r^2 = y^2))
+#
+#
+from graphics import *
+from math import sqrt
+
+def main():
+    win = GraphWin('Circle Intersetion',400,400)
+    win.setCoords(-10,-12,10,10)
+    
+    #step 1: description
+    descr = Text(Point(0,8),"Program to calculate x value intersections")
+    click = Text(Point(0,-11), "Click anywhere to continue")
+    descr.setSize(8)
+    click.setSize(8)
+    descr.draw(win)
+    click.draw(win)
+    
+    win.getMouse() # Wait for mouse click and then clear screen
+    descr.undraw()
+    
+    #step 2: Obtain input from user
+    #Add entry box for radius and y intercept
+    r_text = Text(Point(-4,4),"Radius:")
+    y_text = Text(Point(-4,2),"Intersection:")
+    r_text.setSize(8)
+    y_text.setSize(8)
+    r_text.draw(win)
+    y_text.draw(win)
+    r_input = Entry(Point(0,4), 3)
+    y_input = Entry(Point(0,2), 3)
+    r_input.setSize(8)
+    y_input.setSize(8)
+    r_input.draw(win)
+    y_input.draw(win)
+    
+    #Get the radius and intercept from the user and clear screen
+    win.getMouse()
+    r = eval(r_input.getText())
+    y = eval(y_input.getText())
+    r_text.undraw()
+    y_text.undraw()
+    r_input.undraw()
+    y_input.undraw()
+    click.undraw()
+    
+    #Compute the x values of intersection
+    x_int1 = -sqrt(r ** 2 - y ** 2)
+    x_int2 = sqrt(r ** 2 - y ** 2)
+    
+    
+    #Step 3: Displaying data
+    # Draw circle and line on the x and y axis
+    x_axis = Line(Point(-10,0), Point(10,0))
+    x_axis.setArrow("last")
+    y_axis = Line(Point(0,-10), Point(0,10))
+    y_axis.setArrow("last")
+    circ = Circle(Point(0,0), r)
+    
+    line = Line(Point(-10,y), Point(10, y))
+    
+    int1 = Circle(Point(x_int1, y), 0.2)
+    int1.setFill("red")
+    int1.setOutline("red")
+    int2 = Circle(Point(x_int2, y), 0.2)
+    int2.setFill("red")
+    int2.setOutline("red")
+    x_axis.draw(win)
+    y_axis.draw(win)
+    circ.draw(win)
+    line.draw(win)
+    int1.draw(win)
+    int2.draw(win)
+    
+    #Dispay the x_int on screen
+    x1_text = Text(Point(x_int1-2,y), f"x1 are {round(x_int1)}")
+    x2_text = Text(Point(x_int2+2,y), f"x2 are {round(x_int2)}")
+    int_info = Text(Point(0,-11), f" x points are {x_int1} + {x_int2}")
+    x1_text.setSize(8)
+    x2_text.setSize(8)
+    x1_text.draw(win)
+    x2_text.draw(win)
+    int_info.setSize(8)
+    int_info.draw(win)
+
+    
+    win.getMouse()#Close the window by clicking the mouse
+    win.close()
+
+main()
+#
+
