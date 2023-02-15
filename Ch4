@@ -83,16 +83,188 @@ Multiple Choice
 # A1. Objects are key to understanding object-oriented technology. You can look around you now and see many examples of real-world objects: your dog, your desk, your television
 #     set, your bicycle. These real-world objects share two characteristics: They all have state and behavior. 
 #     For example, dogs have state (name, color, breed, hungry) and behavior (barking, fetching, and wagging tail). 
+#     For example, cats have state (name, color, breed) and behavior( purring, grooming, kneading and climbing)
 #     Bicycles have state (current gear, current pedal cadence, two wheels, number of gears) and behavior (braking, accelerating, slowing down, changing gears).
 #
+# Q2. Describe in your own words the object produced by each of the following operations from the graphics module. Be as precise as you can. Be sure to mention such things 
+#     as the size, position, and appearance of the various objects. You may include a sketch if that helps.
+#
+# a) Point(130, 130)
+# Constructs a point at x coordinate 130 and y coordinate 130, with 0,0 being located at upper left hand corner. Page 88
+#
+# b) c = Circle(Point(30,40), 25)
+#          c.setFill("blue")
+#          c.setOutline("red")
+#  A blue circle with a red outline centered at (30,40) with a radius of 25
+#
+# Q2c) r = Rectangle(Point(20,20), Point(40,40))
+#          r.setFill(color_rgb(0,255,150)
+#          r.setWidth(3)
+# A square 20 units on each side centered. filled with greenish blue and the outline is 3 pixels wide black line.
+#
+# d) l = Line(Point(100,100), Point(100,200))
+#          l.setOutline("red4")
+#          l.setArrow("first")
+# A vertical dark red line with an arrow to the upper point， the bottom is (100, 200) and the length is 100
+
+# e) Oval(Point(50,50), Point(60,100))
+#
+# An  vertical oval 
+# f) shape = Polygon(Point(5,5), Point(10,10), Point(5,10), Point(10,5))
+#      shape.setFill("orange")
+#
+# two orange cross lines of length of 5sqrt2 like a x
+#
+# g) t = Text(Point(100,100), "Hello World!")
+#          t.setFace("courier")
+#          t.setSize(16)
+#          t.setStyle("italic")
+#          t.draw(win)
+#
+# A message""Hello World!" centered at (100,100), displayed in an italic size 16 "courier" font
+#
+#
+#  Q3.  Describe what happens when the following interactive graphics program runs:
+#
+       from graphics import *
+
+       def main():                          # Defines the function named main() which contains the program
+           win = GraphWin()                 # Creates a GraphWin object with "Graphics Window" default title and default size 200 x 200 pixels
+           shape = Circle(Point(50,50), 20) # Constructs a circle object with the center at (50,50) and radius of 20 pixels
+           shape.setOutline("red")          # Calls setOutline method of circle object named shape, seting its outline to the color red
+           shape.setFill("red")             # Calls setFill method of circle object shape, it fills itself with the color red
+           shape.draw(win)                  # Calls draw method of circle object named shape, it draws itself in graphics window object named win
+           for i in range(10):              # Creates a counted loop that will iterate 10 times
+               p = win.getMouse()           # Calls getMouse() method of graphics window object win, pauses program for user to click in win, returns mouse click as Point object,
+                                            # which is assigned to the variable p (an event object)
+               c = shape.getCenter()        # Calls getCenter() method of circle object shape, returns a clone of the center point of shape
+               dx = p.getX() - c.getX()     # Assignment statement whereby variable dx is assigned the expression in the getX() methods of p and c are used to calculate the
+                                            # difference along the x axis of the user's mouse click with respect to the center point of shape
+               dy = p.getY() - c.get&()     # Assignment statement whereby variable dy is assigned a similar expression as dx, except this time it is for the Y axis
+               shape.move(dx, dy)           # Calls the move() method of shape to move shape by the x distance referred to by dx and the y distance referred to by dy, thus
+                                            # Moves the red circle shape moving its center point to the new coordinates encapsulated in the event object p
+          win.close()                       # Calls the close() method of the Graphics Window variable win, closing the graphics window after the loop is finished.
+                                            # Note that it will not be possible to see the final location of the circle. To do so, comment out win.close() or call on win's
+                                            # getMouse() method to make win close after a mouse click.
+       main()                               # Calls the function named main() to run the program
 
 
+# Programming Exercises
+#
+# Q1a) Alter the previous program to draw squares rather than circles
+#
+# Programming Exercises
 
+# 1. Alter the program from the last discussion question in the following ways:
+# a) Alter the previous program to draw squares rather than circles
 
+from graphics import * 
 
+def main() : 
+    win = GraphWin() 
+    shape = Rectangle (Point(50,50),  Point(70,70))
+    shape.setOutline ("red") 
+    shape.setFill ("red") 
+    shape.draw(win) 
+    for i in range (10) : 
+        p = win.getMouse () 
+        c = shape.getCenter()
+        dx = p.getX () - c.getX ()
+        dy = p.getY() - c.getY() 
+        shape.move (dx,dy)
+    win.close()
+    
+main()
 
+# b) Have each successive click draw an additional square on the screen (rather than moving the existing one).
+from graphics import * 
 
+def main() : 
+    win = GraphWin() 
+    shape = Rectangle (Point(50,50), Point(70,70))
+    shape.setOutline ("red") 
+    shape.setFill ("red" ) 
+    shape.draw(win) 
+    for i in range (10) : 
+        p = win.getMouse () 
+        c = shape.getCenter()
+        dx = p.getX () - c.getX ()
+        dy = p.getY() - c.getY() 
+        shape = shape.clone()
+        shape.move(dx,dy)
+        shape.draw(win)
+    win.close()
+    
+main()
 
+# Q1c Print a message on the window "Click again to quit" after the loop, and wait for a final click before closing the window. Insert immediately before win.close():
+#import graphics
+from graphics import * 
+def main() : 
+    win = GraphWin() 
+    shape = Rectangle (Point(50,50), Point(70,70))
+    shape.setOutline ("red") 
+    shape.setFill ("red" ) 
+    shape.draw(win) 
+    for i in range (10) : 
+        p = win.getMouse () 
+        c = shape.getCenter()
+        dx = p.getX () - c.getX ()
+        dy = p.getY() - c.getY() 
+        shape = shape.clone()
+        shape.move(dx,dy)
+        shape.draw(win)
+       
+    message = Text (Point (100,50 ) , "Click again to quit!") 
+    message.draw(win)
+    Text(Point(100,180), "Click again to quit.").draw(win)
+    win.getMouse ()
+    win.close()
+    
+main()
 
+# Q2) An archery target consists of a central circle of yellow surrounded by concentric rings of red, bue, black and white. Each ring has the same width, which is the same as 
+#     the radius of the yellow circle. Write a program that draws such a target.
+#     Hint: Objects drawn later will appear on top of objects drawn earlier
+#
+# Archery target
+import graphics
+from graphics import * 
 
+def main() : 
+    win = GraphWin("Archery Target") 
+    center = Point (100 , 100)
+    Whitecir = Circle (center, 100) 
+    Whitecir.setOutline ("black") 
+    Whitecir.setFill ("white" ) 
+    Whitecir.draw(win) 
+    
+    Blackcir = Circle (center, 80) 
+    Blackcir.setOutline ("black") 
+    Blackcir.setFill ("black" ) 
+    Blackcir.draw(win)
+    
+    Bluecir = Circle （center, 60) 
+    Bluecir.setOutline ("blue") 
+    Bluecir.setFill ("blue" ) 
+    Bluecir.draw(win)
+    
+    Redcir = Circle (center, 40) 
+    Redcir.setOutline ("red") 
+    Redcir.setFill ("red" ) 
+    Redcir.draw(win)
+    
+    Centercir = Circle (center, 20) 
+    Centercir.setOutline ("yellow") 
+    Centercir.setFill ("yellow" ) 
+    Centercir.draw(win)
+    
+    Text (center, "Click again to quit!") .draw(win)
+    win.getMouse ()
+    win.close ()
+    
+main()
 
+# Q3) Write a program which draws some sort of face
+#
+#
