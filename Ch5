@@ -416,8 +416,161 @@ main()
 #       9    0.968629     0.490255
 #      10    0.118509     0.974630
 #
+# File: chaos11. py 
+# A simple program illustrating chaotic behavior. 
+def main():
+    print("This program illustrates a chaotic function") 
+    x, y = eval(input("Enter two numbers between 0 and 1(seperated with ","): ")) 
+    n = int(input("Please input the iterations times: "))
+    
+    print(" index     ",x,"         ",y)
+    print("-------------------------------")
+    for i in range(1,n+1): 
+        x = 3.9 * x * (1 - x) 
+        y = 3.9 * y * (1 - y)
+        print("{0:4}  {1:12.6f}  {2:12.6f}".format(i, x, y))
+main()
+#
+# Q12. Write an improved version of the futval.py program from Chapter 2.
+#      Your program will prompt the user for the amount of the investment, the annualized interest rate, and the number of years of the investment. The program will then output a
+#      nicely formatted table that tracks the value of the investment year by year. Your output might look something like this:
+#
+#     Year     Value
+#     ----------------
+#       0     $2000.00
+#       1     $2200.00
+#       2     $2420.00
+#       3     $2662.00
+#       4     $2928.20
+#       5     $3221.02
+#       6     $3542.12
+#       7     $3897.43
+#
+# c05ex12-futval12.py
+# Future value with formatted table.
+#
+#fvalue.py
+def main():
+    print("This program calculates the future value of an investment.")
+    print()
+    
+    principal = float(input("Enter the initial principal: "))
+    apr = float(input("Enter the annualized interest rate: "))
+    years = int(input("Enter the number of years: "))
+
+    print(" Year   Value")
+    print("----------------")
+    for i in range(years + 1):
+        print("{0:3}    ${1:7.2f}".format(i,principal))
+        principal = principal * (1 + apr)
+
+main()
+#
+# Q13. Redo any of the previous programming exercises to make them batch-oriented (using text files for input and output
+#
+# c05ex13.py
+# Batch Caesar cipher
+# Input file format: first line is key value; remaining lines are text to encode.
+
+def main():
+    print("Batch Caesar cipher")
+    print()
+
+    inName = input("Enter name of the input file: ")
+    infile = open(inName,'r')
+    key = int(infile.readline())
+
+    outName = input("Enter name of output file: ")
+    outfile = open(outName, 'w')
+    
+    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+
+    for line in infile:
+        for letter in line[:-1]:
+            pos = chars.find(letter)
+            newpos = (pos + key) % len(chars)
+            print(chars[newpos], file=outfile, end="")
+        print(file=outfile)
+
+    infile.close()
+    outfile.close()
+    print("Done")
+
+main()
+#
+# Q15. Write a program to plot a horizontal bar chart of student exam scores. Your program should get input from a file. The first line of the file contains the count of the 
+#      number of students in the file, and each subsequent line contains a student's last name followed by a score in the range 0-100. Your program should draw a horizontal 
+#      rectangle for each student where the length of the bar represents the student's score. The bars should all line up on their left-hand edges.
+#
+#      Note: Page 158 for File Processing help
+#
+#      Hint: Use the number of students to determine the size of the window and its coordinates. 
+#      Bonus: label the bars at the left with the students' names.
+#
+# exams_score.py
+# exams_score.py
+import matplotlib.pyplot as plt # Import the matplot library to plot bar graph
+# import dialog box for opening file
+#from tkinter.filedialog import askopenfilename 
+
+# intialize the x and y with empty array
+x=[]
+y=[]
+
+# open the file in read mode
+#infilename = askopenfilename() # get the file name
+inName = input("Enter name of the input file: ")
+grades = open(inName, "r") # open and read file
+n_students = grades.readline() # By running this first, we take into account the 5 at the top of the grades.txt input file
+print(n_students)
+
+lines = grades.readlines() # read all the lines and store in form of array in Lines variable
+ 
+for line in lines:
+    # in each iteration, split line into first name, last name and score
+    data=line.strip().split()
+    print(data)
+    
+    x.append(int(data[-1]))# then append the score to x array 
+    y.append(data[0])# and append the concatenation of last name
+
+
+fig, ax = plt.subplots()    # store subplots in fig, and ax
+
+p1=ax.barh(y, x,0.5)  # plot the horizontal bar graph using barh function
+ax.bar_label(p1,x, label_type='center')     #label the each bar graph with score using bar label function
+plt.ylabel("Students")      # setting label of y-axis
+plt.xlabel("Scale of grades ( 0 - 100 )")   # setting label of x-axis   
+plt.title("Student Surnames and Grades")    # setting label of title
+
+plt.show()  # At last, this command helps to show plot
 #
 #
+# Q16. Write a program to draw a quiz score histogram. Your program should read data from a file. Each line of the file contains a number in the range 0-10. Your program must 
+#      count the number of occurences of each score and then draw a vertical bar chart with a bar for each possible score (0-10) with height corresponding to the count of that 
+#      score. For example, if 15 students got an 8, then the the height of the bar for 8 should be 15.
+#      Hint: Use a list that stores the count for each possible score.
+#
+# quiz score histogram
+import matplotlib.pyplot as plt # Import the matplot library to plot bar graph
+# import dialog box for opening file
+#from tkinter.filedialog import askopenfilename 
+
+# open the file in read mode
+#infilename = askopenfilename() # get the file name
+inName = input("Enter name of the input file: ")
+quizscores = open(inName, "r") # open and read file
+
+counts = []
+scores = quizscores.readlines()  # Read all the lines in the file and store it in a list
+
+for i in range(11):
+    counts.append(scores.count(str(i)+"\n"))
+    
+plt.bar(range(11),counts,align='center')
+
+plt.gca().set_xticks(range(11))
+plt.show()
 #
 #
 #
