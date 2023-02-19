@@ -344,13 +344,22 @@ main()
 def main():
     plaintext = input("Please input the message you want to encode:")
     key = int(input("Enter the key:"))
+    key = key % 26
     cipher = ""
     for ch in plaintext:
-        index= ord(ch) + key
-        if  index > 90:
-            index = index - 24
-        elif index >122:
-            index = index -24
+        
+        if  ch >= 'a' and ch <='z' :
+            index= ord(ch) + key
+            if index > 122:
+                index = index - 24
+            else:
+                index= ord(ch) + key
+        elif ch >= 'A' and ch <='Z' :
+            index= ord(ch) + key
+            if index >ord('Z'):
+                index = index -24
+        else:
+            index = ord(ch)
         
         cipher = cipher + chr(index)
     print(cipher)
@@ -369,6 +378,7 @@ def main():
     print("The number of words in the sentence,", sentence, "is", number)
 main()
 #
+
 #
 #
 #
