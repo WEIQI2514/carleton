@@ -261,11 +261,113 @@ main()
 #      + 12 + 5 = 60 (which happens to be a very auspicious number, by the way). Write a program that calculates the numeric value of a single name provided as input.
 #      
 #
+#numeric value.py
+# using unicode
+def main():
+    print("numeric value.py")
+    name = str(input("Please enter you name:"))
+    name = name.lower()
+    value = 0
+    for ch in name:
+        numeric = ord(ch)- 96
+        value = value + numeric
+        print(ch, numeric)
+    print("The numeric value of your name is", value)
+        
+main()
+
+#using indexing
+def main():
+    #
+    name = input("Enter your name:").lower()
+    letters = " abcdefghijklmnopqrstuvwxyz"
+    value = 0
+    
+    for ch in name:
+        index = letters.find(ch)
+        print(ch, index)
+        value = value + index
+    print("The numeric value of your name is", value)
+    
+main()
 #
 #
+# Question 6.Expand your solution to the previous problem to allow the calculation of a complete name such as "John Marvin Zelle" or "John Jacob Jingleheimer Smith." The 
+# total value is just the sum of the numberic values of all the names.
+#
+# fullname.py
+# Numerology of a full name
+def main():
+    #
+    name = input("Enter your name:").lower()
+    full = "".join(name.split())
+    
+    letters = " abcdefghijklmnopqrstuvwxyz"
+    value = 0
+    
+    for ch in full:
+        index = letters.find(ch)
+        print(ch, index)
+        value = value + index
+    print("The numeric value of your name is", value)
+    
+main()
 #
 #
+# Q7. A Caesar cipher is a simple substitution sipher based on the idea of shifting each letter of the plaintext message a fixed number (called the key) of positions in
+#     the alphabet. For example, if the key is 2, the word "Sourpuss" would be encoded as "Uqwtrwuu." The original message can be recovered by "reencoding" it using the 
+#     negative of the key.
 #
+#     Write a program that can enconde and decode Caesar ciphers. The input to the program will be a string of plaintext and the value of the key. The output will be an
+#     encoded message where each character in the original message is replaced by shifting it key characters in the Unicode character set. For example, if ch is a 
+#     character in the  string and key is the amount to shift, then the character that replaces ch can be calculated as: chr(ord(ch) + key)
+#
+#cipher.py
+def main():
+    plaintext = input("Please input the message you want to encode:")
+    key = int(input("Enter the key:"))
+    cipher = ""
+    for ch in plaintext:
+        index= ord(ch) + key
+        cipher = cipher + chr(index)
+    print(cipher)
+    
+main()     
+#
+# Q8. One problem with the previous exercise is that it does not deal with the case when we "drop off the end" of the alphabet. A true Caesar cipher does the shifting
+#     in a circular fashion where the next character after "z" is "a." Modify your solution to the previous problem to make it circular. You may assume that the input 
+#     consists only of letters and spaces.
+#     Hint: Make a string containing all the characters of your alphabet and use positions in this string as your code. You do not have to shift "z" int "a"; just make
+#     sure that you use a circular shift over the entire sequence of characters in your alphabet string.
+#
+#cipher2.py
+def main():
+    plaintext = input("Please input the message you want to encode:")
+    key = int(input("Enter the key:"))
+    cipher = ""
+    for ch in plaintext:
+        index= ord(ch) + key
+        if  index > 90:
+            index = index - 24
+        elif index >122:
+            index = index -24
+        
+        cipher = cipher + chr(index)
+    print(cipher)
+    
+main()
+#
+# Q9. Write a program that counts the number of words in a sentence entered by the user.
+#
+def main():
+    sentence = str(input("Please enter your sentence here: "))
+    #Example: I shot the sheriff
+    words = sentence.split() 
+    # example: ['I', 'shot', 'the', 'sheriff']
+    print(words) # Put this in to see the output of splitting the sentence
+    number = len(words)
+    print("The number of words in the sentence,", sentence, "is", number)
+main()
 #
 #
 #
