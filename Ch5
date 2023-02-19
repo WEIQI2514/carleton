@@ -378,8 +378,47 @@ def main():
     print("The number of words in the sentence,", sentence, "is", number)
 main()
 #
+# Q10. Write a program that calculates the average word length in a sentence entered by the user.
+#      Same as above, but also count length of each words, add up all the numbers, divide by number of words.
+#
+# Averge.py
+# Get the average word count from an input phrase or sentence
+#average.py
+def main():
+    sentence = str(input("Please enter your sentence here: "))
+    #Example: I shot the sheriff
+    words = sentence.split() 
+    # example: ['I', 'shot', 'the', 'sheriff']
+    print(words) # Put this in to see the output of splitting the sentence
+    total = 0
+    for w in words:
+        total = total +len(w)
+    number = len(words)
+    aver = total / number
+    print("The average length of words in the sentenceb is", aver)
+    
+main()
+#
+# Q11. Write an improved version of the chaos.py program from Chapter 1 that allows a user to input two initial values and the number of of iterations, and then prints
+#      a nicely formatted table showing how the values change over time. For example, if the starting values were .25 and .26 with 10 iterations, the table might look 
+#      like this:
+#
+#     index    0.25         0.26
+#     ----------------------------
+#       1    0.731250     0.750360
+#       2    0.766441     0.730547
+#       3    0.698135     0.767707
+#       4    0.821896     0.695499
+#       5    0.570894     0.825942
+#       6    0.955399     0.560671
+#       7    0.166187     0.960644
+#       8    0.540418     0.147447
+#       9    0.968629     0.490255
+#      10    0.118509     0.974630
+#
+#
+#
+#
+#
+#
 
-#
-#
-#
-#
