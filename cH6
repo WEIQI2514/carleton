@@ -48,3 +48,10 @@ a) nothing b) its parameters c) its variables d) None *
 10. A function can modify the value of an actual parameter only if it's 
 a) mutable* b) a list c) passed by reference d) a variable
 
+Discussion 
+# Q1. In your own words, describe two motivations for defining functions in your programs
+# A1: functions are useful for me to avoid replicate coding and it make the code more readable and modular. better way to keep the code sync .
+
+# Q2. We have been thinking about computer programs as sequences of instructions where the computer methodically executes one instruction and then moves on to thenext
+#     one. Do programs that contain functions fit this model.
+# A2:
