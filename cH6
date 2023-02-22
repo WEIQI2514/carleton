@@ -52,8 +52,6 @@ Discussion
 # Q1. In your own words, describe two motivations for defining functions in your programs
 # A1: functions are useful for me to avoid replicate coding and it make the code more readable and modular. better way to keep the code sync .
 
-# Q2. We have been thinking about computer programs as sequences of instructions where the computer methodically executes one instruction and then moves on to thenext
-#     one. Do programs that contain functions fit this model.
 # Q2. We have been thinking about computer programs as sequences of instructions where the computer methodically executes one instruction and then moves on to the next
 #     one. Do programs that contain functions fit this model.
 
@@ -61,49 +59,41 @@ Discussion
 #     and forwards but in fact, it is just referring to a pre created command. A bit like a journey where you keep going forwards, you just refer to the map every now 
 #     and again
 
-# Q3a. Parameters are an important concept in defining functions. What is the purpose of parameters?
+# Q3
+# a). Parameters are an important concept in defining functions. What is the purpose of parameters?
  
-# A3a. The only way for a function to see a variable from another function is for the variable to be passed as a parameter
+# A3a. parameters passes the value from functions. The only way for a function to see a variable from another function is for the variable to be passed as a parameter
 
-# Q3b. What is the difference between a formal parameter and an actual parameter?
+# b). What is the difference between a formal parameter and an actual parameter?
 
 # A3b. The parameter appearing in the function definition is called the formal parameter and the expressions appearing in a function call are known as the actual 
 #      parameters
 #
-# Q3c. In what ways are parameters similar to and different from ordinary variables?
+# c). In what ways are parameters similar to and different from ordinary variables?
 
 # A3c. Parameters are like ordinary function variables in that they are local to the function and serve as "named values." They are different because they are 
 #      automatically assigned an initial value when the function is called. Normal local variables have to be assigned a value within the function definition.
 
-# Q4a. Functions can be thought of as miniature (sub) programs inside other programs. Like any other program, we can think of functions as having input and output to 
-#      communicate with the main program. How does the program provide "input" to one of it's functions?
-
+# Q4.  Functions can be thought of as miniature (sub) programs inside other programs. Like any other program, we can think of functions as having input and output to 
+#      communicate with the main program.
+   a). How does the program provide "input" to one of it's functions?
 # A4a. A program provides input by parameters
 
-# Q4b. Functions can be thought of as miniature (sub) programs inside other programs. Like any other program, we can think of functions as having input and output to 
-#      communicate with the main program. How does a function provide output to the program?
-
+# b).  How does a function provide output to the program?
 # A4b. Usually through a return statement. Functions may also change the values of mutable parameters
 
 # Q5a. Consider this simple function. What does thsi function do?
-
-def cube(x):
- answer = x * x * x
- return answer
-
-# A5a. This function computes the cube of x
-
-# Q5b. Show how a program could use this function to print the value of y(3)
-
-def cube(y)
-
-# Q5c. Here is a fragment of the program that uses this function. The output from this function is 4 27. Explain why the output is not 27 27 even though the cube seems to
+       def cube(x):
+          answer = x * x * x
+          return answer
+# a). This function computes the cube of x
+# b). Show how a program could use this function to print the value of y(3)
+      def cube(y)
+# c). Here is a fragment of the program that uses this function. The output from this function is 4 27. Explain why the output is not 27 27 even though the cube seems to
 #      to change the value of the answer to 27.
-#
- answer = 4
- result = cube(3)
- print(answer, result)
-
+#      answer = 4
+       result = cube(3)
+       print(answer, result)
 # A5c. There are two different variables named answer. The variable inside of cube is changed, but it does not affect the value of the other variable.
 
 # Programming Exercises
@@ -142,23 +132,24 @@ main()
 
 # The ants go marching in
 
-def verse():
-        print("Into the ground...")
-        print("To get out...")
-        print("Of the rain.")
-        print("Boom! " * 3)
+def line():
+    print("And they all go marching down ... ")
+    print("In the ground ...")
+    print("To get out ....")
+    print("Of the rain")
+    print("Boom! Boom! Boom!")
 
 def ants():
     num = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
     rhyme = ['suck his thumb','tie his shoe','brush his hair', 'shut the door','dance like crazy','pick up stones', 'eat the grass','make a cake', 'eat a bug', 'chase the cat']
-    for i in range (10):
-        print("The ants go marching {0} by {0}, hurrah! hurrah!".format(str(num[i])))
-        print("The ants go marching {0} by {0}, hurrah! hurrah!".format(str(num[i])))
+    for i in range(10):
+        print("The ants go marching {0} by {0},hurrah! hurrah!".format(str(num[i])))
+        print("The ants go marching {0} by {0},hurrah! hurrah!".format(str(num[i])))
         print("The ants go marching {0} by {0},".format(str(num[i])))
-        print("The little one stops to {0},".format(str(rhyme[i])))
-        print("And they all go marching down...")
-        verse()
+        print("The little one stops to {},".format(rhyme[i]))
+        line()
         print()
+    
 def main():
     ants()
 main()
@@ -173,14 +164,14 @@ main()
 import math
 
 def sphereArea(radius):
-    return 4 * math.pi * radius**2
-
+    return 4 * math.pi* radius **2
+   
 def sphereVolume(radius):
-    return (4 / 3) * math.pi * radius * radius * radius
+    return 4/3 * math.pi * radius **3
 
 def main():
-    r = eval(input("Enter the radius of the sphere: "))
-    print("The area of the sphereis", sphereArea(r))
+    r = float(input("Enter the radius of the sphere: "))
+    print("The area of the sphere is", sphereArea(r))
     print()
     print("The volume of a sphere is", sphereVolume(r))
 
@@ -191,27 +182,24 @@ main()
 # Write definitions for the following two functions
 
 # sumN(n) returns the sum of the first n natural numbers
-# sumNCubes(n) returns the sum of the cubes of the first n natural numbers
-
 def sumN(n):
     total = 0
-    for i in range(1,n+1):
-        total = total + i
+    for i in range(n + 1):
+        total = total + i 
     return total
 
-def sumNCube(n):
+# sumNCubes(n) returns the sum of the cubes of the first n natural numbers
+def sumNCubes(n):
     total = 0
-    for i in range(1,n+1):
-        total = total + i**3
+    for i in range(n + 1):
+        total = total + i**3 
     return total
 
 def main():
-    print("This program computes the sum and sum of cubes of the first")
-    print("N natural numbers.\n")
-
-    n = int(input("Please enter a value for n: "))
-    print("The sum of the first %d natural numbers is %d" % (n,sumN(n)))
-    print("The sum of the cubes of those numbers is %d" % (sumNCube(n)))
+    n = int(input("Enter an integer: "))
+    print("The sum of {0} is {1}".format(n, sumN(n)))
+    print()
+    print("The sum of {0} cubes is {1}".format(n, sumNCubes(n)))
 
 main()
 
@@ -233,18 +221,12 @@ main()
 
 #This program will calculate the cost per square inch of a pizza given its diameter and price
 
-#Don't forget you may need float as the divsion may not produce integers (Final output will say 0)
-
-#When formatting at the end, use %f for floating point numbers
+#Don't forget you may need float as the divsion may not produce integers (Final output will say 0). When formatting at the end, use %f for floating point numbers
 
 import math
 
-#Calculate the area of a pizza
-
 def area(d):
     return math.pi * (0.5 * d)**2
-
-#calculate the cost per square inch of the pizza 
 
 def costPerInch(d, price):
     return float(price) / area(d)
@@ -287,7 +269,6 @@ main()
 # Write a function to compute the nth Fibonacci number. Use your function to solve Programming Exercise 16 from Chapter 3
 
 # This program computes the nth Fibonacci number
-
 # Example 0, 1, 2, 3, 4, 5, 6, 7
 #         0, 1, 1, 2, 3, 5, 8, 13
 
@@ -309,22 +290,30 @@ main()
 # Exercise 8 
 
 # Solve Programming Exercise 17 from Chapter 3 using a function nextGuess(guess, x)
-
-def nextGuess(guess, x):
-    return (guess + x/guess) / 2.0
-
-def sqrRoot(x, n):
-    guess = x / 2.0
-    for i in range(n):
-        guess = nextGuess(guess, x)
-    return guess
+import math
+def square_root(x, n):
+    guess = x / 2
     
+    for i in range(n):
+        guess = (guess + x / guess) / 2
+    
+    return guess
+def nextguess(x, guess):
+    return (guess + (x / guess)) / 2
+
+def sqrt2(x,n):
+    guess = x / 2
+    for i in range(n):
+        guess = nextguess(x, guess)
+    return guess
 
 def main():
-    x = float(input("Enter the value to take the root of: "))
-    n = int(input("Enter the number of iterations: "))
-    print("Square root is", sqrRoot(x, n))
+    x = float(input("Please enter a number: "))
+    n = eval(input("How many times do you want to try?"))
 
+    g = sqrt2(x, n)
+    diff = math.sqrt(x) - g
+    print("Approximate square root is {0:0.2f},Difference from math.sqrt is {1:0.2f}.".format(g, diff))
 main()
 
 # Exercise 9
@@ -335,15 +324,21 @@ main()
 
 # New problem
 # Do Programming Exercise 3 from Chapter 5 using a function grade (score) that returns the letter grade for a score.
-
 def grade(score):
-    return "FFDCBA"[score]
+    if score<60:
+        return "F"
+    elif score< 70:
+        return "D"
+    elif score <80:
+        return "C"
+    elif score <90:
+        return "B"
+    else:
+        return "A"
 
 def main():
-    print("Quiz Grader")
-    score = int(input("Enter the score (0-5): "))
+    score = int(input("Enter the score:"))
     print("The grade is", grade(score))
-
 main()
 
 # Exercise 10
@@ -366,7 +361,7 @@ def main():
 
 main()
 
-# Chapter 6 - Exercise 11
+# Exercise 11
 
 # Write and test a function to meet this specification
 
@@ -385,18 +380,15 @@ def main():
 
 main()
 
-# Chapter 6 - Exercise 12
-
+# Exercise 12
 # Write and test a function to meet this specification
-
 # sumList(nums) nums is a list of numbers. Return the sum of numbers in the list
 
 import math
-
 def sumList(nums):
     sum = 0 # Don't forget here to use 0 as the integer and not "" as I first did thinking I could add to a list
-    for num in nums:
-        sum = sum + num
+    for i in nums:
+        sum = sum + i
     return sum
 
 def main():
@@ -405,7 +397,7 @@ def main():
 
 main()
 
-# Chapter 6 - Exercise 13.
+# Exercise 13.
 # Write and test a function to meet this specification
 
 # toNumbers(strList) strList is a list of strings each of which represents a number. Modifies each entry in the list by
@@ -416,13 +408,13 @@ def toNumbers(strList):
         strList[number] = float(strList[number])
 
 def main():
-    list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    list = ["1", "99", "83", "4", "65", "6", "7", "8", "9", "10"]
     toNumbers(list)
     print(list)
 
 main()
 
-# Chapter 6 - Exercise 14
+# Exercise 14
 # Sum of squares from file. I have a file called list.txt which contains numbers 1-10
 
 def toNumbers(strList):
@@ -431,25 +423,27 @@ def toNumbers(strList):
 
 def sumList(nums):
     total = 0
-    for n in nums:
-        total = total + n
+    for i in nums:
+        total = total + i
     return total
 
 def squareEach(nums):
+    total = 0
     for i in range(len(nums)):
-        nums[i] = nums[i]**2
-
+        total = total + nums[i]**2
+    return total
+        
 def main():
     print("Program to find sum of squares from numbers in a file")
-    fname = input("Enter filename: ")
-    data = open(fname,'r').readlines()
+    infile = input("please input a file name:")
+    data = open(infile, "r").readlines()
     toNumbers(data)
     squareEach(data)
-    print("Sum of squares:", sumList(data))
+    print("Sum of squares:", squareEach(data))
 
 main()
 
-#Chapter 6 Exercise 15
+# Exercise 15
 
 # This function can draw a smiley or grim face. Demonstrate the function by writing a program that draws several faces of varying sizes in a single window
 
@@ -458,7 +452,7 @@ from graphics import *
 def drawFace(center, size, window):
     # head draws a circle centered at a point with a radius of size
     head = Circle(center, size)
-    head.setFill("green")
+    head.setFill("yellow")
     head.draw(window)
     # lefteye
     eyeSize = size * 0.25
@@ -470,8 +464,8 @@ def drawFace(center, size, window):
     # righteye
     rightEye = Circle(center, eyeSize)
     rightEye.move(eyeOff, -eyeOff)
-    leftEye.setFill("yellow")
-    rightEye.setFill("yellow")
+    leftEye.setFill("black")
+    rightEye.setFill("black")
     rightEye.draw(window)
     # mouth
     mouthSize = 0.8 * size
@@ -493,7 +487,7 @@ def main():
 
 main()
 
-# Chapter 6 - Exercise 16
+# Exercise 16
 # Overlaying a face on a photo or gif
 
 from graphics import *
@@ -504,7 +498,7 @@ def drawFace(center, size, window):
     mouthSize = 0.8 * size
     mouthOff = size / 2.0
     head = Circle(center, size)
-    head.setFill("green")
+    head.setFill("yellow")
     head.draw(window)
     leftEye = Circle(center, eyeSize)
     leftEye.move(-eyeOff, -eyeOff)
@@ -512,6 +506,8 @@ def drawFace(center, size, window):
     rightEye.move(eyeOff, -eyeOff)
     leftEye.draw(window)
     rightEye.draw(window)
+    leftEye.setFill("black")
+    rightEye.setFill("black")
     p1 = center.clone()
     p1.move(-mouthSize/2, mouthOff)
     p2 = center.clone()
@@ -538,7 +534,7 @@ def createPicWin(picFile):
     img.move(width//2, height//2)
     img.draw(win)
     return win
-    
+
 def main():
     print("Photo Anonymizer: Draw faces over pictures.")
     picFile = input("Enter name of file containing GIF image: ")
