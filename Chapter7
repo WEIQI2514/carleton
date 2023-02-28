@@ -1,0 +1,112 @@
+# "Python Programming: An Introduction to Computer Science"
+# by John Zelle, 3rd Ed.
+# Chapter 7: Decision Structures
+# End-of-Chapter Exercises
+#
+# REVIEW QUESTIONS
+#
+# True/False
+# 1. A simple decision can be implemented with an if statement. True
+
+# 2. In Python conditions, /= is written as/=.  False !=
+
+# 3. Strings are compared by lexicographic ordering. True
+
+# 4. A two-way decision is implemented using an if-elif statement. True
+
+# 5. The math.sqrt function cannot compute the square root of a negative number. True
+
+# 6. A single try statement can catch multiple kinds of errors. False
+
+# 7. Multi-way decisions must be handled by nesting multiple if-else statements. False
+
+# 8. There is usually only one correct solution to a problem involving decision structures. False
+# Reference page 234:There is more than one way to do it. 
+
+# 9. The condition x <= y <= z is allowed in Python. True
+# Reference page 228:The condition x1 >= x2 >= x3 does not match the template for conditions shown above. Most computer languages would not accept this as a valid 
+expression. It turns out that Python does allow this compound condition, and it behaves exactly like the mathematical relations xl >= x2 >= x3.
+
+# 10. Input validation means prompting a user when input is required. False
+# 
+#
+# Multiple Choice
+# 1. A statement that controls the execution of other statements is called a c)
+a) boss structure b) super structure c) control structure* d) branch 
+
+# 2. The best structure for implementing a multi-way decision in Python is c)
+a) if b) if- else c) if- elif- else* d) try 
+
+# 3. An expression that evaluates to either true or false is called b)
+a) operational b) Boolean* c) simple d) compound
+
+# 4. When a program is being run directly (not imported), the value of __name __ IS b)
+a) script b) main* c) __main__ d) True 
+
+# 5. The literals for type bool are b)
+a) T, F b) True, False* c) true, false d) 1, 0 
+
+# 6. Placing a decision inside of another decision is an example of c)
+a) cloning b) spooning c) nesting* d) procrastination 
+
+# 7. In Python, the body of a decision is indicated by a)
+a) indentation* b) parentheses c) curly braces d) a colon 
+
+# 8. A structure in which one decision leads to another set of decisions, which leads to another set of decisions, etc., is called a decision tree
+a) network b) web c) tree* d) trap 
+
+# 9. Taking the square root of a negative value with math.sqrt produces a(n) a)
+a) ValueError* b) imaginary number c) program crash d) stomachache 
+
+# 10. A multiple choice question is most similar to c）
+a) simple decision b) two-way decision c) multi-way decisions* d) an exception handler 
+#
+# Discussion
+#
+# 1.  Explain the following patterns in your own words: 
+#     a) simple decision：when the condition is true, The sequence of statements are executed, if it is false, skip the statements. 
+#     Answer：  The sequences of statements in a simple decision excecutes when the condition true. If it is false, the statements are skipped.
+#     b) two-way decision 
+#     Answer：  A two-way decision is a simple decision with two parts. If the condition is true, the statements are executed. If it is false, a different set of  
+#     statements is excecuted.
+#     c) multi-way decision 
+#    Answer： Multi-way decisions specifiy different conditions, which, if true, lead to different sets of statements being executd.
+#     
+# 2.  How is exception handling using try/except similar to and different from handling exceptional cases using ordinary decision structures (variations on if)?
+#     
+#     Answer：Exception-handling is conditional, similar to if statements. If an error occurs in the body of the try statement, Python looks for an except clause with a
+#     matching error and excecute the handler code if an appropriate except is found.
+#
+# 3. The following is a (silly) decision structure:
+    a, b, c = eval( input('Enter three numb ers : '))
+    if a > b: 
+    if b > c: 
+        print("Spam Please!" ) 
+    else : 
+        print("It's a late parrot!" ) 
+elif b > c: 
+    print("Cheese Shoppe" ) 
+    if a >= c: 
+        print("Chedda r" ) 
+    elif a < b: 
+        print ("Gouda") 
+    elif c == b: 
+        print("Swiss") 
+else: 
+    print("Trees") 
+    if a == b: 
+        print("Chestnut" ) 
+    else : 
+        print ("Larch") 
+print ("Done" )
+
+# Show the utput that would result from each of the following possible inputs: 
+              |Expecting result
+a) 3, 4, 5     Trees\n  Larch\n Done              
+b) 3, 3, 3    Trees\n Chestnut\n Done
+c) 5, 4, 3    Spam Please!\n Done
+d) 3, 5, 2    Cheese Shoppe\n Cheddar\n Done
+e) 5, 4, 7    It's a late parrot!\n Done
+f) 3, 3, 2    Cheese Shoppe\nCheddar\n Done
+    
+#     
