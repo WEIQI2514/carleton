@@ -101,12 +101,15 @@ else:
 print ("Done" )
 
 # Show the utput that would result from each of the following possible inputs: 
-              |Expecting result
+#              |Expecting result
 a) 3, 4, 5     Trees\n  Larch\n Done              
-b) 3, 3, 3    Trees\n Chestnut\n Done
-c) 5, 4, 3    Spam Please!\n Done
-d) 3, 5, 2    Cheese Shoppe\n Cheddar\n Done
-e) 5, 4, 7    It's a late parrot!\n Done
-f) 3, 3, 2    Cheese Shoppe\nCheddar\n Done
-    
-#     
+b) 3, 3, 3     Trees\n Chestnut\n Done
+c) 5, 4, 3     Spam Please!\n Done
+d) 3, 5, 2     Cheese Shoppe\n Cheddar\n Done
+e) 5, 4, 7     It's a late parrot!\n Done
+f) 3, 3, 2     Cheese Shoppe\nCheddar\n Done
+#    
+# 1. Many companies pay time-and-a-half for any hours worked above 40 in a given week. Write a program to input the number of hours worked and the hourly rate and
+#     calculate the total wages for the week.    
+
+
